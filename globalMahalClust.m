@@ -9,8 +9,6 @@ N         = 500;
 M         = 1200;       % #Fetures in high dimensional space
 x1        = rand(N,1);
 x2        = rand(N,1);
-X1        = repmat(x1',[M 1]);
-X2        = repmat(x2',[M 1]);
 dataOrig  = [x1' ; x2'];
 
 % parameters for the linear transformation
