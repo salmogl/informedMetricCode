@@ -1,6 +1,11 @@
 # informedMetricCode
 Repository for the paper "Mahalanonbis Distance Informed by Clustering" by Almog Lahav, Ronen Talmon and Yuval Kluger. 
 
+## Example 1 (Section 5 in the paper)
+
+Run the sctript "globalMahalClust.m"
+
+## Example 4
 Dependencies:
 
 Data for the gene expression example was taken from:
