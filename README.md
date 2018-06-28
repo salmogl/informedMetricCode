@@ -17,7 +17,7 @@ Director's Challenge Consortium for the Molecular Classification of Lung Adenoca
 
 1. Gene expression data:
 
-	a. Download the file "GSE68465_caArray_jacob-00182.tar.gz" from: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE68465. Save the file at myDataPath.
+	a. Download the file "GSE68465_caArray_jacob-00182.tar.gz" from: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE68465. Etract the file to myDataPath.
 	
 	b. In the script "xls2mat_MSK.m" update the data path: dataFolderPathLoad = myDataPath;
 	
