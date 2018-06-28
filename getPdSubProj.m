@@ -16,21 +16,17 @@ Classifier = zeros(size(clust,1), classNum);
 for i=1:classNum
     Classifier(clust == i,i) = 1;
 end
+
 % normalization according to group size
-H = Classifier./(repmat(sqrt(sum(Classifier)),[size(clust,1) 1]));
-
-U1       = U;
-
-% U0       = rand(m,rank);
-diff     = zeros(niter,1);
-
+H       = Classifier./(repmat(sqrt(sum(Classifier)),[size(clust,1) 1]));
+U1      = U;
+diff    = zeros(niter,1);
 
 for ii = 1:niter
 
     U0       = U1;
     Grad     = (eye(m)-U1*U1')*sigma*U1 + sigma*(eye(m)-U1*U1')*U1;
-%     Grad     = (eye(m)-U0*U0')*cov(X')*U0;
-%     U0       = U0 + mu*Grad;%/norm(Grad,2);
+
     switch params.stepOpt
         
         case 'diminish'
@@ -51,10 +47,8 @@ for ii = 1:niter
             
     end
 
-
-    U1       = (H*H')*U1;
-    
-    diff(ii)  = norm(U0-U1,'fro');
+    U1          = (H*H')*U1;    
+    diff(ii)    = norm(U0-U1,'fro');
     
     if (diff(ii) < params.threshDiff)
         break
@@ -64,11 +58,9 @@ for ii = 1:niter
 %     if (params.debugMode)
 %         diff(ii)  = norm(U0-U1,'fro');%norm(U*U' - U0*U0'); 
 %     end
-    
-    
+       
 end
 
-% norm2(X-(U+a*(X-U*U'*X)*X'*U)*(U+a*(X-U*U'*X)*X'*U)'*X)^2
 U1  = U1./repmat(sqrt(sum(U1.^2,1)),m,1);
 
 % debug

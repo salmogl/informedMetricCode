@@ -2,9 +2,11 @@ clear all;
 close all hidden;
 clc; 
 
-dataSet             = 'MSK';
-loadPath            = addPathLoad(dataSet);
-load(loadPath);
+addpath('../');
+
+dataFolderPathLoad = '';
+load(strcat(dataFolderPathLoad,'dataStruct_MSK'));
+
 fSize               = 15;
 set(0,'DefaultFigureVisible','off')
 
