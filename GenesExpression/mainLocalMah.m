@@ -3,8 +3,6 @@ close all hidden;
 clc; 
 
 addpath('..\')
-addpath('kmplot')
-addpath('logrank')
 addpath('dnafinder-kmplot-cff01a4')
 addpath('dnafinder-logrank-5246b53')
 
