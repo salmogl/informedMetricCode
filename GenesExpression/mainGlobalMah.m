@@ -2,7 +2,11 @@ clear all;
 close all hidden;
 clc; 
 
-addpath('../');
+addpath('..\');
+addpath('kmplot')
+addpath('logrank')
+addpath('dnafinder-kmplot-cff01a4')
+addpath('dnafinder-logrank-5246b53')
 
 dataFolderPathLoad = '';
 load(strcat(dataFolderPathLoad,'dataStruct_MSK'));
@@ -59,11 +63,11 @@ for kk = 1:length(kClusters)
         %%
         groupsPca           = kmeans(Vpca',2,'MaxIter',1e6,'OnlinePhase','on','replicates',500);
         [x1_pca,x2_pca]     = getRiskGroups(month,vitalStat,groupsPca);
-        pPcaAllp(ii)        = logrank(x2_pca,x1_pca);
+        pPcaAllp(ii)        = logrankWrap(x2_pca,x1_pca);
 
         groupsInf           = kmeans(Vinf',2,'MaxIter',1e6,'OnlinePhase','on','replicates',500);
         [x1_inf,x2_inf]     = getRiskGroups(month,vitalStat,groupsInf);
-        pInfAllp(ii)        = logrank(x2_inf,x1_inf);
+        pInfAllp(ii)        = logrankWrap(x2_inf,x1_inf);
 
     end
 
@@ -114,7 +118,7 @@ xlabel('$i$','Interpreter','Latex','FontSize',fSize)
 
 % Kaplan-Meier survival plots
 figure;
-pPca                = logrank(x2_pca,x1_pca);
+pPca                = logrankWrap(x2_pca,x1_pca);
 title('')
 xlabel('Time [Month]','Interpreter','Latex','FontSize',fSize)
 ylabel('Estimated survival function','Interpreter','Latex','FontSize',fSize)
@@ -123,7 +127,7 @@ set(le,'Interpreter','Latex','FontSize',fSize-2)
 xlim([0 60])
 
 figure;
-pInf                = logrank(x2_inf,x1_inf);
+pInf                = logrankWrap(x2_inf,x1_inf);
 title('')
 xlabel('Time [Month]','Interpreter','Latex','FontSize',fSize)
 ylabel('Estimated survival function','Interpreter','Latex','FontSize',fSize)

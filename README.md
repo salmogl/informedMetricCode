@@ -28,9 +28,9 @@ Director's Challenge Consortium for the Molecular Classification of Lung Adenoca
 	e. Run the script "xls2mat_CANDF.m".
 	
 
-2. kmplot.m - a Matlab function that calculates Kaplan-Meier survival plot. Download: http://www.mathworks.com/matlabcentral/fileexchange/22293.
+2. kmplot.m - a Matlab function that calculates Kaplan-Meier survival plot. Download: http://www.mathworks.com/matlabcentral/fileexchange/22293 (update 20 Apr 2018), and save it at the folder "GenesExpression".
 
-3. logrank.m - a Matlab function that calculates P-value. Download: http://www.mathworks.com/matlabcentral/fileexchange/22317.
+3. logrank.m - a Matlab function that calculates P-value. Download: http://www.mathworks.com/matlabcentral/fileexchange/22317 (update 26 Jun 2018), and save it at the folder "GenesExpression".
 
 
 ### MSK data set (Section 7.1 in the paper)

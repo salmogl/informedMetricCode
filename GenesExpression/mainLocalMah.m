@@ -2,9 +2,11 @@ clear all;
 close all hidden;
 clc; 
 
+addpath('..\')
 addpath('kmplot')
 addpath('logrank')
-addpath('..\')
+addpath('dnafinder-kmplot-cff01a4')
+addpath('dnafinder-logrank-5246b53')
 
 dataFolderPathLoad = '';
 load(strcat(dataFolderPathLoad,'dataStruct_CANDF'));
@@ -100,7 +102,7 @@ for mm = 1:length(knn)
         month2Pca5years(month2Pca5years > maxMonth & vitalStat(group2Pca5years)) = maxMonth;
         x1Lm                    = [ month1Pca5years , vitalStat(group1Pca5years) ];
         x2Lm                    = [ month2Pca5years , vitalStat(group2Pca5years) ];
-        pPcaAllP(pp)            = logrank(x1Lm,x2Lm);
+        pPcaAllP(pp)            = logrankWrap(x1Lm,x2Lm);
 
         Vclust                  = mean(VclustAll,2);
         groupsClust             = ones(N,1);
@@ -113,7 +115,7 @@ for mm = 1:length(knn)
         month2Clust5years(month2Clust5years > maxMonth & vitalStat(group2Clust5years)) = maxMonth;
         x1Ilm                   = [ month1Clust5years , vitalStat(group1Clust5years) ];
         x2Ilm                   = [ month2Clust5years , vitalStat(group2Clust5years) ];
-        pClustAllP(pp)          = logrank(x1Ilm,x2Ilm);
+        pClustAllP(pp)          = logrankWrap(x1Ilm,x2Ilm);
 
     end
 
@@ -126,7 +128,7 @@ end
 set(0,'DefaultFigureVisible','on')
 
 figure;
-logrank(x1Lm,x2Lm);
+logrankWrap(x1Lm,x2Lm);
 title('')
 xlabel('Time [Month]','Interpreter','Latex','FontSize',fSize)
 ylabel('Esimated survival function','Interpreter','Latex','FontSize',fSize)
@@ -135,7 +137,7 @@ set(le,'Interpreter','Latex','FontSize',fSize-2)
 xlim([0 60])
 
 figure;
-logrank(x1Ilm,x2Ilm);
+logrankWrap(x1Ilm,x2Ilm);
 title('')
 xlabel('Time [Month]','Interpreter','Latex','FontSize',fSize)
 ylabel('Esimated survival function','Interpreter','Latex','FontSize',fSize)
