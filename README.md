@@ -37,6 +37,10 @@ Director's Challenge Consortium for the Molecular Classification of Lung Adenoca
 
 Run the script "mainGlobalMah.m".
 
+To obtain Fig. 13 in the paper, change the following variable:
+
+kClusters = 10 : 30;
+
 
 ### CANDF data set (Section 7.2 in the paper)
 
@@ -45,6 +49,7 @@ Run the script "mainLocalMah.m".
 To obtain Fig. 16 and Fig. 17 in the paper, change the following variables:
 
 knn 	= 10 : 5 :60; 
+
 pIter 	= 20;
 
 Note that runing with this setting will take a long time.  
