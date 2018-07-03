@@ -5,11 +5,13 @@ Repository for the paper "Mahalanonbis Distance Informed by Clustering" by Almog
 
 Run the sctript "globalMahalClust.m".
 
+![Alt text](figures/sec6Cov1.png?raw=true "Title") ![Alt text](figures/sec6Cov2.png?raw=true "Title")
+
 ## Example 2 (Section 6 in the paper)
 
 Run the script "syntheticToyProblem.m".
 
-![Alt text](figures/sec6Cov1.png?raw=true "Title") ![Alt text](figures/sec6Cov2.png?raw=true "Title")
+![Alt text](figures/exp1_dist_cx.PNG?raw=true "Title") ![Alt text](figures/exp1_dist.PNG?raw=true "Title")
 
 
 
