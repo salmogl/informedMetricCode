@@ -6,7 +6,7 @@ addpath('..\')
 addpath('dnafinder-kmplot-cff01a4')
 addpath('dnafinder-logrank-5246b53')
 
-dataFolderPathLoad = '';
+dataFolderPathLoad = 'C:\Users\myPath\';
 load(strcat(dataFolderPathLoad,'dataStruct_CANDF'));
 
 fSize       = 15;
