@@ -5,7 +5,7 @@ Repository for the paper "Mahalanonbis Distance Informed by Clustering" by Almog
 
 Run the sctript "globalMahalClust.m".
 
-![Alt text](figures/sec6Cov1.png?raw=true | width=30) ![Alt text](figures/sec6Cov2.png?raw=true | width=30)
+![Alt text](figures/sec6Cov1.png?raw=true =20x20) ![Alt text](figures/sec6Cov2.png?raw=true "Title")
 
 ## Example 2 (Section 6 in the paper)
 
