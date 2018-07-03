@@ -44,7 +44,8 @@ Director's Challenge Consortium for the Molecular Classification of Lung Adenoca
 
 Run the script "mainGlobalMah.m".
 
-![Alt Text](figures/sec7KaplanMeier.gif?raw=true)
+<img src="sec7KaplanMeier.gif?raw=true" alt="sec7KaplanMeier" width="420px"/> <img src="figures/dataClust.png?raw=true" alt="dataClust" width="420px"/>
+
 
 To obtain Fig. 13 in the paper, change the following variable:
 
