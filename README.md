@@ -11,6 +11,8 @@ Run the script "syntheticToyProblem.m".
 
 ![Alt text](figures/sec6Cov1.png?raw=true "Title") 
 ![Alt text](figures/sec6Cov2.png?raw=true "Title")
+<img src="figures/sec6Cov1.png" width="20">
+<img src="figures/sec6Cov1.png" width="20">
 
 
 
