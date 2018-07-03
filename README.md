@@ -9,7 +9,9 @@ Run the sctript "globalMahalClust.m".
 
 Run the script "syntheticToyProblem.m".
 
-![Alt text](figures/sec6Cov1.png?raw=true "Title")
+![Alt text](figures/sec6Cov1.png?raw=true "Title") 
+![Alt text](figures/sec6Cov2.png?raw=true "Title")
+
 
 
 ## Example 3 (Section 7 in the paper)
