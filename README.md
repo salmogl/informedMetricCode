@@ -9,7 +9,8 @@ Run the sctript "globalMahalClust.m".
 
 Run the script "syntheticToyProblem.m".
 
-![alt text](https://github.com/salmogl/informedMetricCode/figures/sec6Cov1.png)
+
+![My image](https://github.com/salmogl/informedMetricCode/figures/sec6Cov1.png)
 
 
 ## Example 3 (Section 7 in the paper)
