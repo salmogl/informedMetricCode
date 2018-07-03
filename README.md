@@ -55,7 +55,7 @@ kClusters = 10 : 30;
 ### CANDF data set (Section 7.2 in the paper)
 
 Run the script "mainLocalMah.m".
-<div style="text-align:center"><img src="figures/pVal.png?raw=true" alt="pVal" width="420px"/></div>
+<img src="figures/pVal.png?raw=true" alt="pVal" width="420px"/>
 
 To obtain Fig. 16 and Fig. 17 in the paper, change the following variables:
 
