@@ -9,6 +9,9 @@ Run the sctript "globalMahalClust.m".
 
 Run the script "syntheticToyProblem.m".
 
+![alt text](https://github.com/salmogl/informedMetricCode/figures/sec6Cov1.eps)
+
+
 ## Example 3 (Section 7 in the paper)
 Gene expression data was taken from:
 Director's Challenge Consortium for the Molecular Classification of Lung Adenocarcinoma., Shedden K, Taylor JM, Enkemann SA et al. Gene expression-based survival prediction in lung adenocarcinoma: a multi-site, blinded validation study. Nat Med 2008 Aug;14(8):822-7. PMID: 18641660.
