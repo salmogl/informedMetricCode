@@ -44,6 +44,8 @@ Director's Challenge Consortium for the Molecular Classification of Lung Adenoca
 
 Run the script "mainGlobalMah.m".
 
+![Alt Text](figures/sec7KaplanMeier.gif?raw=true)
+
 To obtain Fig. 13 in the paper, change the following variable:
 
 kClusters = 10 : 30;
