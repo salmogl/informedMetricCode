@@ -61,10 +61,10 @@ Run the script "mainGlobalMah.m".
 <img src="figures/sec7KaplanMeier.gif?raw=true" alt="sec7KaplanMeier" width="420px"/> <img src="figures/dataClust.png?raw=true" alt="dataClust" width="420px"/>
 
 
-To obtain Fig. 13 in the paper, change the following variable:
+To obtain Fig. 13 - set:
 
-kClusters = 10 : 30;
-
+				   kClusters 	= 10 : 30;
+				   
 
 ### CANDF data set (Section 7.2 in the paper)
 
@@ -72,11 +72,10 @@ Run the script "mainLocalMah.m".
 
 <div style="text-align:center"><img src="figures/pVal.PNG?raw=true" alt="pVal" width="420px"/></div>
 
+To obtain Fig. 16 and Fig. 17 - set:
 
-To obtain Fig. 16 and Fig. 17 in the paper, change the following variables:
-
-knn 	= 10 : 5 :60; 
-
-pIter 	= 20;
+                   knn 			= 10 : 5 :60; 
+				   
+				   pIter 		= 20;
 
 Note that runing with this setting will take a long time.  
