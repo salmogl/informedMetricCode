@@ -14,7 +14,7 @@ Run the script "syntheticToyProblem.m".
 
 <img src="figures/sec6Cov1.png?raw=true" alt="sec6Cov2" width="420px"/>  <img src="figures/sec6Cov2.png?raw=true" alt="sec6Cov2" width="420px"/>
 
-To obtain figures 6a, 6b - set:
+To obtain Fig. 6a and Fig. 6b - set:
 
                    nColsTest       = [20 : 20 : 200 , 250 : 50 : 700 , 800 : 100 : 2000]; 
 				   
@@ -22,7 +22,7 @@ To obtain figures 6a, 6b - set:
 				   
                    iterationType   = 'nSamples';
 				   
-To obtain figures 8a, 8b - set:
+To obtain Fig. 8a and Fig. 8b - set:
 
                    VkClassRows     = 10 : 40; 
 				   
@@ -74,8 +74,8 @@ Run the script "mainLocalMah.m".
 
 To obtain Fig. 16 and Fig. 17 - set:
 
-                   knn 			= 10 : 5 :60; 
+                   knn       	   = 10 : 5 :60; 
 				   
-				   pIter 		= 20;
+                   pIter           = 20;		   
 
 Note that runing with this setting will take a long time.  
