@@ -16,7 +16,7 @@ Run the script "syntheticToyProblem.m".
 
 To obtain Fig. 6a and Fig. 6b - set:
 
-                   nColsTest       = [20 : 20 : 200 , 250 : 50 : 700 , 800 : 100 : 2000]; 
+                   nColsTest       = [20 : 20 : 200 , 250 : 50 : 700 , 800 : 100 : 2000];
 				   
                    nTrial          = 50;
 				   
@@ -74,8 +74,8 @@ Run the script "mainLocalMah.m".
 
 To obtain Fig. 16 and Fig. 17 - set:
 
-	knn       	= 10 : 5 : 60; 
+					knn       	= 10 : 5 : 60;
 				   
-	pIter       = 20;		   
+					pIter       = 20; 
 
 Note that runing with this setting will take a long time.  
