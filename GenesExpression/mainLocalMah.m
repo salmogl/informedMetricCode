@@ -1,3 +1,14 @@
+% Source code for the paper "Mahalanonbis Distance Informed by Clustering" 
+% by Almog Lahav, Ronen Talmon and Yuval Kluger.
+%==========================================================================
+% Section 7 (in the paper) - "Application to Gene Expression Data" 
+% Figures  : 15a, 15b, 16, 17
+% Comments : 
+% To obtain Fig. 16 and Fig. 17 - set:
+%                   knn 	= 10 : 5 :60; 
+%                   pIter 	= 20;
+% Note that runing with this setting will take a long time.  
+
 clear all;
 close all hidden;
 clc; 
@@ -42,8 +53,8 @@ addXLabel(HMObject, 'Subjects','FontSize', fSize)
 
 %%
 kIter           = 1;                    % PC of people is avaraged over kIter iterations
-pIter           = 1;                    % p-value is avaraged over pIter iterations
-knn             = 34;                   % neighborhood size
+pIter           = 1;                    % p-value is avaraged over pIter iterations. Figures 16-17 in the paper: pIter = 20;
+knn             = 34;                   % neighborhood size. Figures 16-17 in the paper: knn  = 10 : 5 :60;
 pClustAllP      = zeros(1,pIter);
 pPcaAllP        = zeros(1,pIter);
 pClustAllK      = zeros(1,length(knn));

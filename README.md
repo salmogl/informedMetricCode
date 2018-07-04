@@ -14,7 +14,15 @@ Run the script "syntheticToyProblem.m".
 
 <img src="figures/sec6Cov1.png?raw=true" alt="sec6Cov2" width="420px"/>  <img src="figures/sec6Cov2.png?raw=true" alt="sec6Cov2" width="420px"/>
 
+To obtain figures 6a, 6b - set:
+                   nColsTest       = [20:20:200 250:50:700 800:100:2000]; 
+                   nTrial          = 50;
+                   iterationType   = 'nSamples';
+To obtain figures 8a, 8b - set:
+                   VkClassRows     = 10 : 40; 
+                   iterationType   = 'kClusters';
 
+Note that runing with this settings will take a long time.  
 
 ## Example 3 (Section 7 in the paper)
 Gene expression data was taken from:

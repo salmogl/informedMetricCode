@@ -1,10 +1,14 @@
+% Source code for the paper "Mahalanonbis Distance Informed by Clustering" 
+% by Almog Lahav, Ronen Talmon and Yuval Kluger.
+%==========================================================================
+% Section 5 (in the paper) - "Example: Recovering Distances in a Hidden Space" 
+% Figures  : 2,3a,3b,4a,4b
+
 clc;
 clear all;
 close all;
 set(0,'defaulttextinterpreter','latex');
 
-
-% Generate data in the original space X (in R^2)
 N         = 500; 
 M         = 1200;       % #Fetures in high dimensional space
 x1        = rand(N,1);
@@ -76,7 +80,9 @@ embeddingClassDist  = pdist(embeddingClass);
 
 %%
 % correlation between the original dustances and the mahalanobis distances
-distData            = pdist(data');
+mahabLikeDistClass  = pdist(dataProjectedClass(:,1:50)');
+distData            = pdist(data(:,1:50)');
+distOrig            = pdist(dataOrig(:,1:50)');
 M                   = corrcoef([distOrig' mahabLikeDistClass']);
 classCor            = M(2,1);
 M                   = corrcoef([distOrig' distData']);
@@ -85,22 +91,19 @@ eucCor              = M(2,1);
 mahabLikeDistClass  = mahabLikeDistClass/max(mahabLikeDistClass);
 distOrig            = distOrig/max(distOrig);
 distData            = distData/max(distData);
-%% Figures
 
+%% Figures
 figure;
 imagesc(data)
 colormap(autumn(5))
 
 pointSize           = 12;
 figure;
-scatter(embeddingClass(:,1),embeddingClass(:,2),pointSize,x1,'filed')
-xlabel('$\phi_1$','FontSize',15)
-ylabel('$\phi_2$','FontSize',15)
-
-figure;
-scatter(x1,x2,pointSize,cos(x1),'filed')
-xlabel('$x_1$','Interpreter','latex','FontSize',15)
-ylabel('$x_2$','Interpreter','latex','FontSize',15)
+scatter(distOrig,distData,pointSize,'filled')
+xlabel('$\|x_1-x_2\|_2$','FontSize',15)
+ylabel('$\|c_1-c_2\|_2$','FontSize',15)
+t=text(0.2,0.8,strcat('Correlation = ',sprintf('%.2f',eucCor)));
+t.FontSize = 15;
 
 figure;
 scatter(distOrig,mahabLikeDistClass,pointSize,'filled')
@@ -110,8 +113,12 @@ t=text(0.2,0.8,strcat('Correlation = ',sprintf('%.2f',classCor)));
 t.FontSize = 15;
 
 figure;
-scatter(distOrig,distData,pointSize,'filled')
-xlabel('$\|x_1-x_2\|_2$','FontSize',15)
-ylabel('$\|c_1-c_2\|_2$','FontSize',15)
-t=text(0.2,0.8,strcat('Correlation = ',sprintf('%.2f',eucCor)));
-t.FontSize = 15;
+scatter(x1,x2,pointSize,cos(x1),'filled')
+xlabel('$x_1$','Interpreter','latex','FontSize',15)
+ylabel('$x_2$','Interpreter','latex','FontSize',15)
+
+figure;
+scatter(embeddingClass(:,1),embeddingClass(:,2),pointSize,x1,'filled')
+xlabel('$\phi_1$','FontSize',15)
+ylabel('$\phi_2$','FontSize',15)
+

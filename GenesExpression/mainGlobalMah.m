@@ -1,3 +1,13 @@
+% Source code for the paper "Mahalanonbis Distance Informed by Clustering" 
+% by Almog Lahav, Ronen Talmon and Yuval Kluger.
+%==========================================================================
+% Section 7 (in the paper) - "Application to Gene Expression Data" 
+% Figures  : 10a, 10b, 10c, 10d, 11, 12a, 12b, 13, 14a, 14b, 14c
+% Comments : 
+% To obtain figure 13 - set:
+%                   kClusters       = 10 : 30; 
+% Note that runing with this setting will take a long time.  
+
 clear all;
 close all hidden;
 clc; 
@@ -20,7 +30,7 @@ vitalStat           = dataStruct.vitalStat;
 data                = data(indMaxStd(2:201),:);
 [M,N]               = size(data);
 rank                = 5;
-kClusters           = 21; %10:1:40;
+kClusters           = 21; % Fig. 13 in the paper: kClusters  = 10 : 30;
 
 params.rank         = rank;
 params.mu           = 1e-1;

@@ -1,3 +1,18 @@
+% Source code for the paper "Mahalanonbis Distance Informed by Clustering" 
+% by Almog Lahav, Ronen Talmon and Yuval Kluger.
+%==========================================================================
+% Section 6 (in the paper) - "Synthetic Toy Problem" 
+% Figures  : 5a, 5b, 6a, 6b, 7a, 7b, 7c, 7d, 8a, 8b, 9a, 9b
+% Comments : 
+% For figures 6a, 6b - set:
+%                   nColsTest       = [20:20:200 250:50:700 800:100:2000]; 
+%                   nTrial          = 50;
+%                   iterationType   = 'nSamples';
+% For figures 8a, 8b - set:
+%                   VkClassRows     = 10 : 40; 
+%                   iterationType   = 'kClusters';
+% Note that runing with this setting will take a long time.  
+
 clc;
 clear all;
 close all hidden;
@@ -5,17 +20,10 @@ close all;
 
 set(0,'defaulttextinterpreter','latex')
 
-nTrial          = 1;
-nColsTest       = 100;
-VkClassRows     = 18;
-plotFlag        = true;
-iterationType   = 'nSamples'; %'kClusters';'nSamples'
-
-if (plotFlag)
-    set(0,'DefaultFigureVisible','on')
-else
-    set(0,'DefaultFigureVisible','off')
-end
+nTrial          = 1;           % Fig. 6 in the paper: 50
+nColsTest       = [80 100];    % Fig. 6 in the paper: [20:20:200 250:50:700 800:100:2000] 
+VkClassRows     = [18 20];     % Fig. 8 in the paper: 10:40
+iterationType   = 'nSamples';  %'kClusters';'nSamples'
 
 switch iterationType
     
@@ -53,7 +61,7 @@ dataTypa                = 'noPerm';
 
 for iter = 1:nIters;
 
-    errAllNorms             = zeros(4,3);
+    errAllNorms             = zeros(2,3);
     
     if(strcmp(iterationType,'nSamples'))
         args.nColsTest          = nColsTest(iter);
@@ -123,79 +131,22 @@ for iter = 1:nIters;
                 classRealRows(index(bordersRows(i)+1:bordersRows(i+1))) = i;
         end
 
-        U_infR          = getPdSubProj(data,classRealRows,paramsGrad);
-        U_real          = realPd(:,1:kClassRows);
-        U_pca           = V(:,1:kClassRows);
-        S_Pca           = S(1:kClassRows,1:kClassRows);
-
-        if (plotFlag)
-
-            figure;
-            imagesc(data), colormap jet, axis on
-
-            covPCA   = U_pca*S_Pca*U_pca';
-            covClass = U_inf*S_Pca*U_inf';
-
-            plotCovariance(covPCA,'$\widehat{\Sigma}_{ij}$');
-            plotCovariance(covClass,'$\widetilde{\Sigma}_{ij}$');
-            plotCovariance(covariance,'$\Sigma_{ij}$');
-
-            %%
-            jrow = 900;
-            figure;
-            plot(1:sizeRows,covClass(:,jrow),'linewidth',2)
-            hold on;
-            plot(1:sizeRows,covariance(:,jrow),'linewidth',2)
-            plot(1:sizeRows,covPCA(:,jrow),'k')
-            xlabel('$i$','fontsize',20)
-            h=legend('$\widetilde{\Sigma}_{i900}$','$\Sigma_{i900}$','$\widehat{\Sigma}_{i900}$');
-            set(h,'Interpreter','latex')
-            set(h,'Position',[0.2 0.7 0.2 0.2])
-            set(h,'fontsize',15)
-            ylim([-1 29])
-
-            pointSize = 15;
-            figure;
-            scatter3(embeddingMahalanobis(:,1),embeddingMahalanobis(:,2),embeddingMahalanobis(:,3),pointSize,shuffleCols,'filed')
-            xlabel('$\phi_1$','Interpreter','latex','FontSize',15)
-            ylabel('$\phi_2$','Interpreter','latex','FontSize',15)
-            zlabel('$\phi_3$','Interpreter','latex','FontSize',15)
-            view([-50 12])
-            colormap winter
-
-            figure;
-            scatter3(embeddingKmeans(:,1),embeddingKmeans(:,2),embeddingKmeans(:,3),pointSize,shuffleCols,'filed')
-            xlabel('$\phi_1$','Interpreter','latex','FontSize',15)
-            ylabel('$\phi_2$','Interpreter','latex','FontSize',15)
-            zlabel('$\phi_3$','Interpreter','latex','FontSize',15)
-            view([-50 12])
-            colormap winter
-
-
-        end
+        U_infR                  = getPdSubProj(data,classRealRows,paramsGrad);
+        U_real                  = realPd(:,1:kClassRows);
+        U_pca                   = V(:,1:kClassRows);
+        S_Pca                   = S(1:kClassRows,1:kClassRows);
 
         errNorm2Class           = norm(U_inf*U_inf'-U_real*U_real');
         errNorm2RealClass       = norm(U_infR*U_infR'-U_real*U_real');
         errNorm2Mahalanobis     = norm(U_pca*U_pca'-U_real*U_real');
-
-        errNorm1Class           = norm(U_inf*U_inf'-U_real*U_real',1);
-        errNorm1RealClass       = norm(U_infR*U_infR'-U_real*U_real',1);
-        errNorm1Mahalanobis     = norm(U_pca*U_pca'-U_real*U_real',1);
-
-        errNormInfClass         = norm(U_inf*U_inf'-U_real*U_real',inf);
-        errNormInfRealClass     = norm(U_infR*U_infR'-U_real*U_real',inf);
-        errNormInfMahalanobis   = norm(U_pca*U_pca'-U_real*U_real',inf);
 
         errNormFroClass         = norm(U_inf*U_inf'-U_real*U_real','fro');
         errNormFroRealClass     = norm(U_infR*U_infR'-U_real*U_real','fro');
         errNormFroMahalanobis   = norm(U_pca*U_pca'-U_real*U_real','fro');
 
 
-        errAllNorms = errAllNorms +[errNorm1Class, errNorm1RealClass,errNorm1Mahalanobis;...
-            errNorm2Class, errNorm2RealClass, errNorm2Mahalanobis;...
-            errNormFroClass, errNormFroRealClass, errNormFroMahalanobis;...
-            errNormInfClass, errNormInfRealClass, errNormInfMahalanobis;
-            ];
+        errAllNorms = errAllNorms +[ errNorm2Class, errNorm2RealClass, errNorm2Mahalanobis;...
+            errNormFroClass, errNormFroRealClass, errNormFroMahalanobis];
 
 
     end
@@ -212,14 +163,59 @@ for iter = 1:nIters;
     
 
 end
-set(0,'DefaultFigureVisible','on')
 
-errArray = zeros(nIters,3,4);
+[Nr , Nc] = size(data);
+figure;
+imagesc(data(randperm(Nr),randperm(Nc))), colormap jet, axis on
+
+figure;
+imagesc(data), colormap jet, axis on
+
+covPCA   = U_pca*S_Pca*U_pca';
+covClass = U_inf*S_Pca*U_inf';
+
+plotCovariance(covPCA,'$\widehat{\Sigma}_{ij}$');
+plotCovariance(covClass,'$\widetilde{\Sigma}_{ij}$');
+plotCovariance(covariance,'$\Sigma_{ij}$');
+
+%%
+jrow = 900;
+figure;
+plot(1:sizeRows,covClass(:,jrow),'linewidth',2)
+hold on;
+plot(1:sizeRows,covariance(:,jrow),'linewidth',2)
+plot(1:sizeRows,covPCA(:,jrow),'k')
+xlabel('$i$','fontsize',20)
+h=legend('$\widetilde{\Sigma}_{i900}$','$\Sigma_{i900}$','$\widehat{\Sigma}_{i900}$');
+set(h,'Interpreter','latex')
+set(h,'Position',[0.2 0.7 0.2 0.2])
+set(h,'fontsize',15)
+ylim([-1 29])
+
+pointSize = 15;
+figure;
+scatter3(embeddingMahalanobis(:,1),embeddingMahalanobis(:,2),embeddingMahalanobis(:,3),pointSize,shuffleCols,'filled')
+xlabel('$\phi_1$','Interpreter','latex','FontSize',15)
+ylabel('$\phi_2$','Interpreter','latex','FontSize',15)
+zlabel('$\phi_3$','Interpreter','latex','FontSize',15)
+view([-50 12])
+colormap winter
+
+figure;
+scatter3(embeddingKmeans(:,1),embeddingKmeans(:,2),embeddingKmeans(:,3),pointSize,shuffleCols,'filled')
+xlabel('$\phi_1$','Interpreter','latex','FontSize',15)
+ylabel('$\phi_2$','Interpreter','latex','FontSize',15)
+zlabel('$\phi_3$','Interpreter','latex','FontSize',15)
+view([-50 12])
+colormap winter
+
+
+errArray = zeros(nIters,3,2);
 for j = 1:nIters
     errArray(j,:,:) = errAllNormsMean{j,1}';
 end
 
-ylabelNorm={'$e1$','$e_2$','$e_f$'};
+ylabelNorm={'$e_2$','$e_f$'};
 
 switch iterationType
     case 'nSamples'
@@ -230,7 +226,7 @@ switch iterationType
         labelAx = 'K [Clusters]';
 end
 
-for normI = 1:3
+for normI = 1:2
     figure;
     plot(errAxis,errArray(:,:,normI))
     h=legend('$\widetilde{U}_{K}$ (Clustering)','$\widetilde{U}_{K}$ (Known Clustering)','${U}_{K}$ (PCA)');
