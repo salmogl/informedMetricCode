@@ -76,6 +76,6 @@ To obtain Fig. 16 and Fig. 17 - set:
 
 					knn       	= 10 : 5 : 60;
 				   
-					pIter       = 20; 
+					pIter       = 20;
 
 Note that runing with this setting will take a long time.  
